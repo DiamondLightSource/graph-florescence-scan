@@ -1,5 +1,5 @@
 [package]
-name = "florescence-scan"
+name = "florescence_scan"
 version = "0.1.0"
 edition = "2021"
 
