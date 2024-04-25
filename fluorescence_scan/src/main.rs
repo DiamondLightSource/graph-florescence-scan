@@ -68,7 +68,7 @@ struct ServeArgs {
     otel_collector_url: Option<Url>,
 }
 
-/// S3 bucket where the crystal snapshot data is stored
+/// S3 bucket where the flourescence scan data is stored
 #[derive(Debug, Clone, Deref, FromStr, Into)]
 pub struct S3Bucket(String);
 

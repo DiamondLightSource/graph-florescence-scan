@@ -1,0 +1,6 @@
+dependencies:
+- name: fluorescence_scan
+  repository: ""
+  version: 0.1.0
+digest: sha256:b1bdf3faa909921087850e128c70bc1b01431d7068ce525e7f7ebad63aef173e
+generated: "2024-04-24T14:44:12.18990249+01:00"

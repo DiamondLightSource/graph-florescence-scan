@@ -1,0 +1,24 @@
+fluorescence_scan:
+  enabled: true
+  logLevel: Trace
+  database:
+    host: mysql://ispyb-mariadb-galera-headless/ispyb
+    user: ispyb_ro
+    password:
+      secretName: fluorescence-scan-ispyb
+      secretKey: password
+  otelCollectorUrl: http://federation-opentelemetry-collector:4317
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+              - key: app.kubernetes.io/instance
+                operator: In
+                values:
+                  - ispyb
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                  - mariadb-galera
+          topologyKey: kubernetes.io/hostname

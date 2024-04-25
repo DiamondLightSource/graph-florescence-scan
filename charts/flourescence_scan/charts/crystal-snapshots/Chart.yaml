@@ -1,0 +1,8 @@
+apiVersion: v2
+name: fluorescence_scan
+description: A service providing information about fluorescence scans during a beamline sessions as part of the graph federation
+type: application
+
+version: 0.1.0
+
+appVersion: 0.1.0-rc1

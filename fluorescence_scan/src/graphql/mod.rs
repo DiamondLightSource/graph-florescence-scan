@@ -22,7 +22,7 @@ pub struct Query;
 
 #[ComplexObject]
 impl Session {
-    /// Fetched all crystal snapshots and generates s3 URLs
+    /// Fetched all flourescence scans and generates s3 URLs
     async fn fluorescence_scan(
         &self,
         ctx: &Context<'_>,
