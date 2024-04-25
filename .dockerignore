@@ -1,0 +1,19 @@
+# Developer Tooling
+.devcontainer
+.github
+
+# Version Control
+.git
+
+# Container Files
+Dockerfile
+.dockerignore
+
+# OPA Policy
+org-policy/
+
+# Build Artifacts
+target/
+
+# Supplimentary Files
+LICENSE

@@ -1,0 +1,23 @@
+{
+    "name": "florescence-scan",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "florescence-scan",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+			"ms-kubernetes-tools.vscode-kubernetes-tools",
+			"rust-lang.rust-analyzer",
+			"tamasfe.even-better-toml",
+			"tsandall.opa",
+			"cweijan.vscode-database-client2"
+		]
+      }
+    },
+    "features": {
+      "ghcr.io/devcontainers/features/common-utils:2.4.2": {
+        "username": "none",
+        "upgradePackages": false
+      }
+    },
+    "workspaceFolder": "/workspace"
+  }
