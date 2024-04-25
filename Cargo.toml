@@ -1,6 +1,6 @@
 [workspace]
-default-members = ["florescence-scan"]
-members = [ "florescence-scan", "models"]
+default-members = ["fluorescence-scan"]
+members = [ "fluorescence-scan", "models"]
 resolver = "2"
 
 [workspace.dependencies]

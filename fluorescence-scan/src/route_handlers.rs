@@ -1,6 +1,5 @@
 use async_graphql::Executor;
 use async_graphql_axum::{GraphQLRequest, GraphQLResponse};
-use aws_sdk_s3::Client;
 use axum::{
     extract::Request,
     handler::Handler,
@@ -8,38 +7,23 @@ use axum::{
     response::{IntoResponse, Response},
     RequestExt,
 };
-use sea_orm::DatabaseConnection;
+use axum_extra::{
+    headers::{authorization::Bearer, Authorization},
+    TypedHeader,
+};
 use std::{future::Future, pin::Pin};
-
-use crate::{graphql::AddDataLoadersExt, S3Bucket};
 
 /// An [`Handler`] which executes an [`Executor`] including the [`Authorization<Bearer>`] in the [`async_graphql::Context`]
 #[derive(Debug, Clone)]
 pub struct GraphQLHandler<E: Executor> {
     /// The GraphQL executor used to process the request
     executor: E,
-    /// Database connection
-    database: DatabaseConnection,
-    /// S3 Client
-    s3_client: Client,
-    /// S3 Bucket
-    s3_bucket: S3Bucket,
 }
 
 impl<E: Executor> GraphQLHandler<E> {
     /// Constructs an instance of the handler with the provided schema.
-    pub fn new(
-        executor: E,
-        database: DatabaseConnection,
-        s3_client: Client,
-        s3_bucket: S3Bucket,
-    ) -> Self {
-        Self {
-            executor,
-            database,
-            s3_client,
-            s3_bucket,
-        }
+    pub fn new(executor: E) -> Self {
+        Self { executor }
     }
 }
 
@@ -49,17 +33,18 @@ where
 {
     type Future = Pin<Box<dyn Future<Output = Response> + Send + 'static>>;
 
-    fn call(self, req: Request, _state: S) -> Self::Future {
+    fn call(self, mut req: Request, _state: S) -> Self::Future {
         Box::pin(async move {
+            let token = req
+                .extract_parts::<TypedHeader<Authorization<Bearer>>>()
+                .await
+                .ok()
+                .map(|token| token.0);
             let request = req.extract::<GraphQLRequest, _>().await;
             match request {
                 Ok(request) => GraphQLResponse::from(
                     self.executor
-                        .execute(request.into_inner().add_data_loaders(
-                            self.database,
-                            self.s3_client,
-                            self.s3_bucket,
-                        ))
+                        .execute(request.into_inner().data(token))
                         .await,
                 )
                 .into_response(),
