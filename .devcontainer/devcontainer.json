@@ -1,7 +1,7 @@
 {
-  "name": "fluoresence-scan",
+  "name": "fluoresence_scan",
   "dockerComposeFile": "docker-compose.yml",
-  "service": "fluorescence-scan",
+  "service": "fluoresence_scan",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -9,6 +9,7 @@
     "rust-lang.rust-analyzer",
     "tamasfe.even-better-toml",
     "tsandall.opa",
+    "mtxr.sqltools-driver-mysql",
     "cweijan.vscode-database-client2"
   ]
     }
