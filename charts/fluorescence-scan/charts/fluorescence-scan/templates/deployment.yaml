@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "fluorescence_scan.fullname" . }}
+  name: {{ include "fluorescence-scan.fullname" . }}
   labels:
-    {{- include "fluorescence_scan.labels" . | nindent 4 }}
+    {{- include "fluorescence-scan.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "fluorescence_scan.selectorLabels" . | nindent 6 }}
+      {{- include "fluorescence-scan.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -16,13 +16,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "fluorescence_scan.selectorLabels" . | nindent 8 }}
+        {{- include "fluorescence-scan.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "fluorescence_scan.serviceAccountName" . }}
+      serviceAccountName: {{ include "fluorescence-scan.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -44,7 +44,7 @@ spec:
                   name: {{ .Values.database.password.secretName }}
                   key: {{ .Values.database.password.secretKey }}
             - name: DATABASE_URL
-              value: {{ include "fluorescence_scan.databaseURL" . }}
+              value: {{ include "fluorescence-scan.databaseURL" . }}
             - name: LOG_LEVEL
               value: {{ .Values.logLevel }}
             - name: OTEL_COLLECTOR_URL

@@ -1,11 +1,11 @@
 apiVersion: v2
-name: fluorescence_scan
+name: fluorescence-scan
 description: A deployment providing information about fluorescence scan during beamline session as part of the graph federation
 type: application
 
 version: 0.1.0
 
 dependencies:
-  - name: fluorescence_scan
+  - name: fluorescence-scan
     version: 0.1.0
-    condition: fluorescence_scan.enabled
+    condition: fluorescence-scan.enabled

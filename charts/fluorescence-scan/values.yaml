@@ -1,4 +1,4 @@
-fluorescence_scan:
+fluorescence-scan:
   enabled: true
   logLevel: Trace
   database:

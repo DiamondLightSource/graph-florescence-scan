@@ -1,7 +1,7 @@
 {
-  "name": "fluoresence_scan",
+  "name": "fluorescence_scan",
   "dockerComposeFile": "docker-compose.yml",
-  "service": "fluoresence_scan",
+  "service": "fluorescence_scan",
   "customizations": {
     "vscode": {
       "extensions": [
