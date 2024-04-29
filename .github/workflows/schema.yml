@@ -42,7 +42,7 @@ jobs:
             --path fluorescence_scan.graphql
 
       - name: Upload Schema Artifact
-        uses: actions/upload-artifact@v4.3.1
+        uses: actions/upload-artifact@v4.3.3
         with:
           name: fluorescence_scan.graphql
           path: fluorescence_scan.graphql
@@ -60,7 +60,7 @@ jobs:
             echo "$HOME/.rover/bin" >> $GITHUB_PATH
 
         - name: Download Schema Artifact
-          uses: actions/download-artifact@v4.1.4
+          uses: actions/download-artifact@v4.1.7
           with:
             name: fluorescence_scan.graphql
 
