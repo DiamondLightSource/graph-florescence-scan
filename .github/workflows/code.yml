@@ -22,7 +22,7 @@ jobs:
       DATABASE_URL: mysql://root:rootpassword@localhost/ispyb_build
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4.1.4
+        uses: actions/checkout@v4.1.5
 
       - name: Install dependencies
         uses: awalsh128/cache-apt-pkgs-action@v1.4.2
@@ -79,7 +79,7 @@ jobs:
       DATABASE_URL: mysql://root:rootpassword@localhost/ispyb_build
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4.1.4
+        uses: actions/checkout@v4.1.5
 
       - name: Install dependencies
         uses: awalsh128/cache-apt-pkgs-action@v1.4.2
