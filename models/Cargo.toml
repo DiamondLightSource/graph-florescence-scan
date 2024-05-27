@@ -7,7 +7,7 @@ edition = "2021"
 path = "src/lib.rs"
 
 [dependencies]
-prettyplease = "0.2.16"
+prettyplease = "0.2.20"
 sea-orm = { workspace = true }
 
 [build-dependencies]
